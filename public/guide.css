@@ -1,0 +1,8 @@
+html { hyphens: auto; overflow-wrap: normal; word-break: normal; }
+.guide { margin: 0; background: #11152a; color: #f4f3f0; font-family: ui-sans-serif, system-ui, sans-serif; line-height: 1.65; }
+.guide main { max-width: 680px; margin: auto; padding: 48px 24px; }
+.guide h1 { line-height: 1.1; font-size: clamp(2rem, 8vw, 3rem); letter-spacing: -.04em; }
+.guide h2 { line-height: 1.25; margin-top: 2rem; font-size: 1.25rem; }
+.guide p { color: #c5c9da; }
+.guide a { color: #f7d458; text-underline-offset: .2em; display: inline-block; padding: 10px 0; min-height: 44px; }
+.guide a:focus-visible { outline: 3px solid #ad9aff; outline-offset: 4px; }

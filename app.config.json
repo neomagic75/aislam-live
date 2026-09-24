@@ -1,0 +1,5 @@
+{
+  "name": "AI Slam Live-App", "shortName": "AI Slam", "slug": "aislam-live",
+  "namespace": "aislam_live", "description": "Die Publikums-App entsteht live am 25. September 2026.",
+  "supabaseProjectRef": "qmrzujmwkiwlgfpxqikl"
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "magic.make-app-draft.v1",
+  "app_name": "AI Slam Live-App",
+  "slug": "aislam-live",
+  "locale": "de-DE",
+  "status": "prepared-infrastructure-awaiting-live-idea",
+  "template": {
+    "source": "neomagic75/magic-app-draft-template",
+    "commit": "965a0e7169fb384a47326e78507cb87562b324be",
+    "initialized_at": "2026-09-24",
+    "method": "Selected template scaffold applied to existing repository; domain and anonymous-browser features excluded."
+  },
+  "repository": {
+    "owner": "neomagic75",
+    "name": "aislam-live",
+    "private": false,
+    "branch": "main"
+  },
+  "hosting": {
+    "provider": "vercel",
+    "team": "stevos-projects-876dfee2",
+    "live_url": "https://aislam-live.vercel.app/"
+  },
+  "data": {
+    "provider": "supabase",
+    "project_ref": "qmrzujmwkiwlgfpxqikl",
+    "namespace": "aislam_live",
+    "table_classification": "server-only",
+    "migration": "supabase/migrations/20260924_aislam_live_probe.sql"
+  },
+  "access": {
+    "mode": "operator-bearer-server-only",
+    "visible_login": false,
+    "shared_across_devices": false,
+    "public_surface": "announcement",
+    "technical_route": "/rehearsal",
+    "note": "Route shell is public. Every data or paid operation requires the operator bearer. Audience authorization is undecided."
+  },
+  "instructions": {
+    "route": "/kurzanleitung.html",
+    "settings_link": true
+  },
+  "indexing": "noindex",
+  "verification": {
+    "local": "2026-09-24: 10 tests passed; app contract validator passed; TypeScript and Vite production build passed.",
+    "cloud": "pending-root",
+    "visual": "pending-root",
+    "template_validator_overrides": [
+      "Service-only table intentionally has no auth.uid ownership or authenticated grant. scripts/validate-app.mjs and authorization tests verify the selected boundary.",
+      "Guide hyphenation is in external public/guide.css; the generic validator searches only HTML. Strict CSP excludes inline styles.",
+      "Public repository and MIT license explicitly requested by the owner on 2026-09-24; private repository template default intentionally overridden."
+    ]
+  }
+}

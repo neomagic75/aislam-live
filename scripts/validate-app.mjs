@@ -1,0 +1,22 @@
+import { readFileSync, readdirSync } from 'node:fs';
+import assert from 'node:assert/strict';
+const read = file => readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
+const manifest = JSON.parse(read('app-draft.json'));
+assert.equal(manifest.template.source, 'neomagic75/magic-app-draft-template');
+assert.equal(manifest.access.mode, 'operator-bearer-server-only');
+assert.equal(manifest.locale, 'de-DE');
+for (const file of ['index.html', 'public/kurzanleitung.html']) { const text = read(file); assert.match(text, /lang="de-DE"/); assert.match(text, /noindex, nofollow, noarchive/); }
+assert.match(read('public/guide.css'), /hyphens:\s*auto/);
+const sql = read(manifest.data.migration);
+assert.match(sql, /enable row level security/i); assert.match(sql, /revoke all.*from public, anon, authenticated/i);
+assert.match(sql, /grant select, insert, delete.*to service_role/i);
+assert.doesNotMatch(sql, /create policy|grant .* to (anon|authenticated)/i);
+const frontend = readdirSync(new URL('../src/', import.meta.url)).filter(file => /\.(tsx?|css)$/.test(file)).map(file => read(`src/${file}`)).join('\n');
+assert.doesNotMatch(frontend, /SUPABASE_SERVICE|GEMINI_API_KEY|signInAnonymously|supabase-js|VITE_.*KEY/);
+assert.match(frontend, /\/kurzanleitung\.html/);
+const deployment = JSON.parse(read('vercel.json'));
+assert.equal(deployment.framework, 'vite');
+const spa = new RegExp(`^${deployment.rewrites[0].source}$`);
+assert.ok(spa.test('/rehearsal')); assert.ok(spa.test('/settings'));
+for (const path of ['/api/status', '/api/probe', '/assets/app.js', '/guide.css', '/kurzanleitung.html']) assert.equal(spa.test(path), false);
+console.log('App boundary, service-only SQL, guide, and API routing checks passed.');
