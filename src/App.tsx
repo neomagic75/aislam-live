@@ -1,72 +1,29 @@
 import { useState } from 'react';
-
-type ProbeMode = 'database' | 'text' | 'image';
-type ProbeResult = { mode: ProbeMode; result: { text?: string; model?: string; mimeType?: string; data?: string } };
-const buildTime = new Intl.DateTimeFormat('de-DE', { dateStyle: 'short', timeStyle: 'short', timeZone: 'Europe/Berlin' }).format(new Date(__BUILD_TIME__));
-
-function Rehearsal() {
-  const [token, setToken] = useState('');
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState('');
-  const [result, setResult] = useState<ProbeResult | null>(null);
-  const [status, setStatus] = useState('');
-  async function check(mode?: ProbeMode) {
-    if (busy) return;
-    setBusy(true); setError(''); setResult(null); setStatus('');
-    try {
-      const response = await fetch(mode ? '/api/probe' : '/api/status', mode ? {
-        method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ mode }), signal: AbortSignal.timeout(55_000),
-      } : { signal: AbortSignal.timeout(10_000) });
-      const body = await response.json();
-      if (!response.ok) throw new Error(body.error || `HTTP ${response.status}`);
-      if (mode) setResult(body);
-      else setStatus(`Konfiguration: Datenbank ${body.configured.database ? 'gesetzt' : 'fehlt'}, Gemini ${body.configured.gemini ? 'gesetzt' : 'fehlt'}, Operator-Zugang ${body.configured.operator ? 'gesetzt' : 'fehlt'}. Modelle: ${body.models.text}, ${body.models.image}. Dies prüft keine Dienstverbindung.`);
-    } catch (reason) {
-      setError(reason instanceof Error ? reason.message : 'Probe fehlgeschlagen.');
-    } finally { setBusy(false); }
-  }
-  return <main className="page">
-    <p className="eyebrow">Nur für die Regie</p><h1>Technische Probe</h1>
-    <p>Jede Probe startet erst per Klick. Text und Bild lösen jeweils einen kostenpflichtigen Gemini-Aufruf aus. Die Datenbankprobe schreibt einen Testdatensatz, liest ihn zurück und löscht ihn wieder.</p>
-    <section className="panel">
-      <label htmlFor="operator-token">Operator-Schlüssel</label>
-      <input id="operator-token" type="password" autoComplete="off" value={token} onChange={event => setToken(event.target.value)} placeholder="Nur für autorisierte Regie" />
-      <p className="small">Der Schlüssel bleibt nur bis zum Verlassen dieser Seite im Arbeitsspeicher.</p>
-      <div className="actions">
-        <button disabled={busy} onClick={() => void check()}>Konfiguration prüfen</button>
-        <button disabled={busy || !token} onClick={() => void check('database')}>Speichern, lesen, löschen</button>
-        <button disabled={busy || !token} onClick={() => void check('text')}>Text testen · kostenpflichtig</button>
-        <button disabled={busy || !token} onClick={() => void check('image')}>Bild testen · kostenpflichtig</button>
-      </div>
-      {busy && <p role="status">Probe läuft. Bitte warten …</p>}
-      {error && <p role="alert" className="error">{error}</p>}
-      {status && <p role="status">{status}</p>}
-      {result && <div role="status" className="result"><h2>Probe erfolgreich</h2>
-        {result.mode === 'database' && <p>Testdatensatz gespeichert, zurückgelesen und gelöscht. Löschung bestätigt.</p>}
-        {result.result.text && <p>{result.result.text}</p>}
-        {result.result.data && <img alt="Technisches Testbild: ein gelber Kreis auf blauem Grund" src={`data:${result.result.mimeType};base64,${result.result.data}`} />}
-        {result.result.model && <p className="small">Modell: {result.result.model}</p>}
-      </div>}
-    </section>
-  </main>;
+import Rehearsal from './Rehearsal';
+import rawData from './data/venues.json';
+type District = { id: string; name: string };
+type Venue = { id: string; name: string; type: string; city: string; districtId: string; childFriendlyEvidence: string; ageNote: string | null; website: string; programUrl: string | null; sourceUrl: string; checkedAt: string };
+type Event = { id: string; venueId: string; title: string; date: string; ageNote: string | null; priceNote: string | null; sourceUrl: string };
+const data = rawData as { districts: District[]; venues: Venue[]; events: Event[] };
+const districts = [...data.districts].sort((a,b) => a.name.localeCompare(b.name,'de'));
+const dateLabel = (date: string) => new Intl.DateTimeFormat('de-DE',{dateStyle:'medium',timeZone:'Europe/Berlin'}).format(new Date(`${date.slice(0,10)}T12:00:00Z`));
+const today = new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Berlin'}).format(new Date());
+const upcoming = data.events.filter(event => event.date.slice(0,10) >= today).sort((a,b) => a.date.localeCompare(b.date));
+const covered = new Set(data.venues.map(venue => venue.districtId));
+function Finder(){
+ const [district,setDistrict] = useState(''); const [query,setQuery] = useState('');
+ const search = query.trim().toLocaleLowerCase('de');
+ const venues = data.venues.filter(venue => (!district || venue.districtId===district) && (!search || `${venue.name} ${venue.city} ${venue.childFriendlyEvidence}`.toLocaleLowerCase('de').includes(search)));
+ return <main id="inhalt"><section className="hero"><div><p className="eyebrow"><span className="sun-dot"/>Für kleine Entdecker · Niedersachsen</p><h1>Raus aus dem Alltag.<br/><em>Rein ins Vergnügen.</em></h1><p className="lead">Freizeitheime, Stadtteilzentren und ihre Angebote für Kinder. Finde einen Ort in deiner Nähe – und das passende Programm direkt beim Veranstalter.</p><a className="hero-link" href="#entdecken">Gemeinsam etwas entdecken <span aria-hidden="true">↓</span></a></div><div className="play-art" aria-hidden="true"><span className="art-label">ZEIT FÜR<br/>ZUSAMMEN.</span><span className="art-sun">✳</span><div className="art-house"><span/><i/><b/></div><span className="art-ground"/><span className="art-flower">✿</span></div></section>
+ <section className="finder" id="entdecken" aria-labelledby="finder-title"><div className="section-heading"><div><p className="eyebrow">Euer nächster Lieblingsort</p><h2 id="finder-title">Was ist bei euch los?</h2></div><span className="selection-note">Recherchierte Startauswahl</span></div>
+ <div className="filters"><div><label htmlFor="district">Landkreis oder kreisfreie Stadt</label><select id="district" value={district} onChange={event=>setDistrict(event.target.value)}><option value="">Ganz Niedersachsen</option>{districts.map(item=><option key={item.id} value={item.id}>{item.name}</option>)}</select></div><div><label htmlFor="search">Ort, Einrichtung oder Interesse</label><input id="search" type="search" value={query} onChange={event=>setQuery(event.target.value)} placeholder="Zum Beispiel Hannover oder Theater"/></div></div>
+ <div className="results-bar"><p role="status" aria-live="polite"><strong>{venues.length}</strong> {venues.length===1?'Einrichtung':'Einrichtungen'}{district?` · ${districts.find(item=>item.id===district)?.name}`:' in der Startauswahl'}</p>{(district||query)&&<button className="reset" onClick={()=>{setDistrict('');setQuery('');}}>Filter zurücksetzen</button>}</div>
+ {venues.length===0?<div className="empty"><span aria-hidden="true">⌕</span><h3>Noch kein Treffer in unserer Auswahl.</h3><p>{district&&!covered.has(district)?'Diese Region ist im recherchierten Startbestand noch nicht vertreten. Das bedeutet nicht, dass es dort keine Angebote gibt.':'Versuche einen anderen Suchbegriff oder erweitere die Region.'}</p><button onClick={()=>{setDistrict('');setQuery('');}}>Alle Einrichtungen ansehen</button></div>:<div className="venue-grid">{venues.map((venue,index)=><article className="venue-card" key={venue.id}><div className={`card-top tone-${index%3}`}><span>{venue.type}</span><span aria-hidden="true">↗</span></div><div className="card-body"><p className="location">{venue.city} · {districts.find(item=>item.id===venue.districtId)?.name}</p><h3>{venue.name}</h3><p className="evidence">{venue.childFriendlyEvidence}</p><p className="age">{venue.ageNote||'Altersangaben bitte im Programm prüfen.'}</p>{upcoming.filter(event=>event.venueId===venue.id).map(event=><div className="event" key={event.id}><span className="event-date">{dateLabel(event.date)}</span><a href={event.sourceUrl} target="_blank" rel="noopener noreferrer">{event.title} ↗</a>{event.ageNote&&<p>{event.ageNote}</p>}{event.priceNote&&<p>{event.priceNote}</p>}</div>)}<a className="button program-link" href={venue.programUrl||venue.website} target="_blank" rel="noopener noreferrer">{venue.programUrl?'Programm entdecken':'Zur Einrichtung'} <span aria-hidden="true">↗</span></a><div className="source-row"><a href={venue.sourceUrl} target="_blank" rel="noopener noreferrer">Quelle & Infos ↗</a><span>Stand {dateLabel(venue.checkedAt)}</span></div></div></article>)}</div>}</section>
+ <aside className="coverage"><div className="coverage-icon" aria-hidden="true">i</div><div><h2>Ein guter Anfang. Noch nicht ganz Niedersachsen.</h2><p>Unsere Startauswahl enthält {data.venues.length} Einrichtungen in {covered.size} Regionen. Grundlage sind recherchierte Angebote für Kinder und Familien. Termine, Anmeldung und Preise prüfst du auf der offiziellen Programmseite. {upcoming.length===0?'Aktuell zeigen wir keine einzeln bestätigten kommenden Termine.':'Einzelne bestätigte Termine stehen direkt bei der Einrichtung.'}</p><p>Die Auswahl ist nicht vollständig und wird derzeit nicht automatisch aktualisiert. <a href="/settings">Mehr über den Datenstand</a></p></div></aside></main>;
 }
-
-export default function App() {
-  const route = window.location.pathname.replace(/\/$/, '') || '/';
-  return <div className="app-shell">
-    <header className="site-header"><a className="wordmark" href="/">AI SLAM<span>LIVE-APP</span></a><a href="/settings">Einstellungen</a></header>
-    {route === '/rehearsal' ? <Rehearsal /> : route === '/settings' ? <main className="page">
-      <p className="eyebrow">Orientierung</p><h1>Einstellungen</h1>
-      <section className="panel"><h2>Aktueller Stand</h2><p>Die App-Idee kommt am 25. September 2026 aus dem Publikum. Hier kannst du anschließend das Ergebnis ausprobieren.</p><a className="button" href="/kurzanleitung.html">Kurzanleitung öffnen</a></section>
-      <p className="small">Stand dieser Oberfläche: {buildTime} Uhr</p><a href="/">Zur Startseite</a>
-    </main> : route !== '/' ? <main className="page"><h1>Seite nicht gefunden</h1><a className="button" href="/">Zur Startseite</a></main> : <main className="page home-page">
-      <p className="eyebrow"><span className="dot" /> 25. September 2026 · Liminale</p>
-      <h1>Eure Idee.<br />Eine neue App.</h1>
-      <p className="lead">Was sie können soll, entscheidet das Publikum. Beim AI Slam bauen wir die App live auf der Bühne.</p>
-      <section className="panel coming"><span className="number" aria-hidden="true">25.09.</span><div><h2>Hier entsteht das Ergebnis.</h2><p>Öffne diese Seite während der Präsentation erneut. Sobald die App bereit ist, kannst du sie hier ausprobieren.</p></div></section>
-      <a className="button" href="https://aislam-site.vercel.app/">Zum AI Slam ↗</a>
-    </main>}
-    <footer><a href="/kurzanleitung.html">Kurzanleitung</a><a href="https://github.com/neomagic75/aislam-live">Quellcode · MIT ↗</a><a href="https://github.com/neomagic75/aislam-live/issues">Problem melden ↗</a><a href="https://aislam-site.vercel.app/impressum">Impressum</a><a href="https://aislam-site.vercel.app/datenschutz">Datenschutz</a></footer>
-  </div>;
+export default function App(){
+ const route=window.location.pathname.replace(/\/$/,'')||'/';
+ return <div className="app-shell"><a className="skip-link" href="#inhalt">Zum Inhalt</a><header className="site-header"><a className="wordmark" href="/" aria-label="Kinderzeit Startseite"><span className="brand-icon" aria-hidden="true">✳</span><span>kinderzeit<span className="brand-region">NIEDERSACHSEN</span></span></a><nav aria-label="Hauptnavigation"><a href="/settings">Über die Auswahl</a><a className="slam-credit" href="https://aislam.cc/">Gebaut beim <img src="/assets/ai-slam-logo.jpg" width="1069" height="329" alt="AI Slam"/></a></nav></header>
+ {route==='/rehearsal'?<Rehearsal/>:route==='/settings'?<main className="page" id="inhalt"><p className="eyebrow">Transparent recherchiert</p><h1>Orte für gemeinsame Zeit.</h1><section className="panel"><h2>Was in dieser Auswahl steckt</h2><p>Kinderzeit hilft Familien, Freizeitheime und Stadtteilzentren in Niedersachsen mit belegten Kinder- und Familienangeboten zu finden. Ergänzend sind passende Bürgerhäuser und soziokulturelle Zentren dabei.</p><p>Der Startbestand wurde am 25. September 2026 recherchiert. Jede Karte nennt ihre Quelle und ihren Prüfstand. Die Verlinkung führt zum offiziellen Programm beziehungsweise zur Einrichtung. Programmänderungen, freie Plätze, Preise und Anmeldungen klärst du dort.</p><p>Die Auswahl deckt {covered.size} Regionen mit {data.venues.length} Einrichtungen ab. Eine Region ohne Treffer ist eine Recherche-Lücke, kein Nachweis fehlender Angebote. Es läuft derzeit keine automatische Aktualisierung.</p><p>Du brauchst kein Konto. Deine Filter bleiben nur in dieser geöffneten Seite; es werden keine persönlichen Profile angelegt.</p><a className="button" href="/kurzanleitung.html">Kurzanleitung öffnen</a></section><a href="/">← Einrichtungen entdecken</a></main>:route!=='/'?<main className="page" id="inhalt"><h1>Seite nicht gefunden</h1><a className="button" href="/">Zur Startseite</a></main>:<Finder/>}
+ <footer><p><strong>kinderzeit</strong> · Gemeinsam mehr entdecken.</p><div><a href="/kurzanleitung.html">Kurzanleitung</a><a href="https://github.com/neomagic75/aislam-live">Quellcode · MIT ↗</a><a href="https://github.com/neomagic75/aislam-live/issues">Hinweis geben ↗</a><a href="https://aislam.cc/impressum">Impressum</a><a href="https://aislam.cc/datenschutz">Datenschutz</a></div></footer></div>;
 }

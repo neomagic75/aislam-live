@@ -1,0 +1,404 @@
+{
+  "districts": [
+    {
+      "id": "landkreis-ammerland",
+      "name": "Ammerland (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-aurich",
+      "name": "Aurich (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-ce",
+      "name": "Celle (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-cloppenburg",
+      "name": "Cloppenburg (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-cuxhaven",
+      "name": "Cuxhaven (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-diepholz",
+      "name": "Diepholz (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-el",
+      "name": "Emsland (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-friesland",
+      "name": "Friesland (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-gifhorn",
+      "name": "Gifhorn (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-goslar",
+      "name": "Goslar (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-goe",
+      "name": "Göttingen (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-noh",
+      "name": "Grafschaft Bentheim (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-hm",
+      "name": "Hameln-Pyrmont (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-harburg",
+      "name": "Harburg (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-heidekreis",
+      "name": "Heidekreis (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-helmstedt",
+      "name": "Helmstedt (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-hi",
+      "name": "Hildesheim (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-holzminden",
+      "name": "Holzminden (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-leer",
+      "name": "Leer (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-dan",
+      "name": "Lüchow-Dannenberg (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-lg",
+      "name": "Lüneburg (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-nienburg-weser",
+      "name": "Nienburg (Weser) (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-northeim",
+      "name": "Northeim (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-oldenburg",
+      "name": "Oldenburg (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-osnabruck",
+      "name": "Osnabrück (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-osterholz",
+      "name": "Osterholz (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-pe",
+      "name": "Peine (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-rotenburg-wumme",
+      "name": "Rotenburg (Wümme) (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-shg",
+      "name": "Schaumburg (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-std",
+      "name": "Stade (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-uelzen",
+      "name": "Uelzen (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-vec",
+      "name": "Vechta (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-verden",
+      "name": "Verden (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-wesermarsch",
+      "name": "Wesermarsch (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-wittmund",
+      "name": "Wittmund (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "landkreis-wolfenbuttel",
+      "name": "Wolfenbüttel (Landkreis)",
+      "type": "Landkreis"
+    },
+    {
+      "id": "d-bs",
+      "name": "Braunschweig (Stadt)",
+      "type": "Kreisfreie Stadt"
+    },
+    {
+      "id": "d-del",
+      "name": "Delmenhorst (Stadt)",
+      "type": "Kreisfreie Stadt"
+    },
+    {
+      "id": "stadt-emden",
+      "name": "Emden (Stadt)",
+      "type": "Kreisfreie Stadt"
+    },
+    {
+      "id": "d-ol-s",
+      "name": "Oldenburg (Stadt)",
+      "type": "Kreisfreie Stadt"
+    },
+    {
+      "id": "d-os-s",
+      "name": "Osnabrück (Stadt)",
+      "type": "Kreisfreie Stadt"
+    },
+    {
+      "id": "stadt-salzgitter",
+      "name": "Salzgitter (Stadt)",
+      "type": "Kreisfreie Stadt"
+    },
+    {
+      "id": "stadt-wilhelmshaven",
+      "name": "Wilhelmshaven (Stadt)",
+      "type": "Kreisfreie Stadt"
+    },
+    {
+      "id": "d-wob",
+      "name": "Wolfsburg (Stadt)",
+      "type": "Kreisfreie Stadt"
+    },
+    {
+      "id": "d-h",
+      "name": "Region Hannover",
+      "type": "Region"
+    }
+  ],
+  "venues": [
+    {
+      "id": "v-fzh-doehren",
+      "name": "Freizeitheim Döhren",
+      "type": "Freizeitheim",
+      "city": "Hannover",
+      "districtId": "d-h",
+      "childFriendlyEvidence": "Kinderkultur mit Kindertheater, Zirkus und Kinderzirkus Cirque d'Oehren.",
+      "ageNote": null,
+      "website": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-D%C3%B6hren",
+      "programUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-D%C3%B6hren/Stadtteilkultur-Termine",
+      "sourceUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-D%C3%B6hren/Stadtteilkultur-Termine/Kinderkultur",
+      "checkedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "id": "v-fzh-vahrenwald",
+      "name": "Freizeitheim Vahrenwald",
+      "type": "Freizeitheim",
+      "city": "Hannover",
+      "districtId": "d-h",
+      "childFriendlyEvidence": "Familienangebote wie SPIEL:ZEIT, Ferienaktionen und die kreative Jugendgruppe BE:TwEEN.",
+      "ageNote": null,
+      "website": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-Vahrenwald",
+      "programUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-Vahrenwald/Veranstaltungen-Kurse",
+      "sourceUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-Vahrenwald/Veranstaltungen-Kurse",
+      "checkedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "id": "v-stz-ricklingen",
+      "name": "Stadtteilzentrum Ricklingen",
+      "type": "Stadtteilzentrum",
+      "city": "Hannover",
+      "districtId": "d-h",
+      "childFriendlyEvidence": "Kinder- und Familienprogramm mit Holzwerkstatt, Tanz, Malen und kreativen Ferienprojekten.",
+      "ageNote": null,
+      "website": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Stadtteilzentrum-Ricklingen",
+      "programUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Stadtteilzentrum-Ricklingen/Veranstaltungen-und-Projekte/Veranstaltungen-f%C3%BCr-Kinder-und-Familien",
+      "sourceUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Stadtteilzentrum-Ricklingen/Veranstaltungen-und-Projekte/Veranstaltungen-f%C3%BCr-Kinder-und-Familien",
+      "checkedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "id": "v-fzh-linden",
+      "name": "Freizeitheim Linden",
+      "type": "Freizeitheim",
+      "city": "Hannover",
+      "districtId": "d-h",
+      "childFriendlyEvidence": "Kreative Workshops und Zirkusgeburtstage für Kinder.",
+      "ageNote": null,
+      "website": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-Linden",
+      "programUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-Linden",
+      "sourceUrl": "https://kinderkultur-stadt-hannover.de/hinter-den-kulissen/stadtteilkultureinrichtungen/freizeitheim-linden",
+      "checkedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "id": "v-brunsviga",
+      "name": "Kultur- und Kommunikationszentrum Brunsviga",
+      "type": "Soziokulturelles Zentrum",
+      "city": "Braunschweig",
+      "districtId": "d-bs",
+      "childFriendlyEvidence": "Kultur für Eltern und Kinder, unter anderem Kinderdisko in Kooperation mit dem Kinder- und Familienzentrum Böcklinstraße.",
+      "ageNote": "3 bis 8 Jahre (Kinderdisko)",
+      "website": "https://www.brunsviga-kulturzentrum.de",
+      "programUrl": "https://www.brunsviga-kulturzentrum.de/kultur-fuer-kids/",
+      "sourceUrl": "https://www.brunsviga-kulturzentrum.de/kultur-fuer-kids/",
+      "checkedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "id": "v-haus-der-jugend-os",
+      "name": "Haus der Jugend",
+      "type": "Jugendzentrum",
+      "city": "Osnabrück",
+      "districtId": "d-os-s",
+      "childFriendlyEvidence": "Eigene Kinderangebote wie kreativer Kindertanz und offener Gamingtreff; dazu Kurse und Ferienangebote.",
+      "ageNote": null,
+      "website": "https://hausderjugend-os.de/",
+      "programUrl": "https://hausderjugend-os.de/",
+      "sourceUrl": "https://hausderjugend-os.de/",
+      "checkedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "id": "v-fst-ofenerdiek",
+      "name": "Freizeitstätte Ofenerdiek",
+      "type": "Freizeitstätte",
+      "city": "Oldenburg",
+      "districtId": "d-ol-s",
+      "childFriendlyEvidence": "Offener Treff mit Kreativangeboten, Kochen sowie Aktionen und Ausflügen in den Ferien.",
+      "ageNote": null,
+      "website": "https://www.oldenburg.de/startseite/leben-in-oldenburg/familie/angebote-fuer-kinder-jugendliche/freizeitstaetten/freizeitstaette-ofenerdiek.html",
+      "programUrl": "https://www.oldenburg.de/startseite/leben-in-oldenburg/familie/angebote-fuer-kinder-jugendliche/freizeitstaetten/freizeitstaette-ofenerdiek.html",
+      "sourceUrl": "https://www.oldenburg.de/startseite/leben-in-oldenburg/familie/angebote-fuer-kinder-jugendliche/freizeitstaetten/freizeitstaette-ofenerdiek.html",
+      "checkedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "id": "v-fst-buergerfelde",
+      "name": "Freizeitstätte Bürgerfelde",
+      "type": "Freizeitstätte",
+      "city": "Oldenburg",
+      "districtId": "d-ol-s",
+      "childFriendlyEvidence": "Offenes Atelier, Töpfern, Breakdance, Ferienpass-Aktionen.",
+      "ageNote": "6 bis 12 Jahre (Kinderzeiten), 13 bis 27 Jahre (Jugendzeiten)",
+      "website": "https://www.oldenburg.de/startseite/leben-in-oldenburg/familie/angebote-fuer-kinder-jugendliche/freizeitstaetten/freizeitstaette-buergerfelde.html",
+      "programUrl": "https://www.oldenburg.de/startseite/leben-in-oldenburg/familie/angebote-fuer-kinder-jugendliche/freizeitstaetten/freizeitstaette-buergerfelde.html",
+      "sourceUrl": "https://www.oldenburg.de/startseite/leben-in-oldenburg/familie/angebote-fuer-kinder-jugendliche/freizeitstaetten/freizeitstaette-buergerfelde.html",
+      "checkedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "id": "v-kufa-hildesheim",
+      "name": "Kulturfabrik Löseke (KUFA)",
+      "type": "Soziokulturelles Zentrum",
+      "city": "Hildesheim",
+      "districtId": "d-hi",
+      "childFriendlyEvidence": "Spezielle 'KUFAmilientage' jeden ersten Sonntag im Monat, Familiendiskos, Kreativ-Workshops.",
+      "ageNote": "5 bis 10 Jahre (KUFAmilientage)",
+      "website": "https://kufa.info/",
+      "programUrl": "https://kufa.info/programm/",
+      "sourceUrl": "https://kufa.info/project/kufamilientage/",
+      "checkedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "id": "v-kaz",
+      "name": "Kulturzentrum KAZ",
+      "type": "Soziokulturelles Zentrum",
+      "city": "Göttingen",
+      "districtId": "d-goe",
+      "childFriendlyEvidence": "Kinderkurse mit Akrobatik, Tanz, Musik, Malen und Ferienangeboten. Auch gemeinsame Kurse für Eltern und Kinder.",
+      "ageNote": "Alter je Kurs unterschiedlich; Akrobatik-Schnupperkurs ab 6 Jahren.",
+      "website": "https://www.kaz-goettingen.de/",
+      "programUrl": "https://www.kaz-goettingen.de/category/kurse-workshops/kinderkurse/",
+      "sourceUrl": "https://www.kaz-goettingen.de/category/kurse-workshops/kinderkurse/",
+      "checkedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "id": "v-toepfers-muehle",
+      "name": "Jugendfreizeitzentrum Töpfers Mühle",
+      "type": "Jugendfreizeitzentrum",
+      "city": "Peine",
+      "districtId": "d-pe",
+      "childFriendlyEvidence": "Treffpunkt für Kinder und Jugendliche mit Basteln, Spielen, Feiern und Kinderferienprogrammen.",
+      "ageNote": null,
+      "website": "https://www.peine-erleben.de/erleben/aktivitaeten/junges-peine/jugendfreizeitzentrum-toepfers-muehle/",
+      "programUrl": "https://www.peine-erleben.de/erleben/aktivitaeten/junges-peine/jugendfreizeitzentrum-toepfers-muehle/",
+      "sourceUrl": "https://www.peine-erleben.de/erleben/aktivitaeten/junges-peine/jugendfreizeitzentrum-toepfers-muehle/",
+      "checkedAt": "2026-09-25T00:00:00Z"
+    }
+  ],
+  "events": [
+    {
+      "id": "e-kaz-akrobatik-20260926",
+      "venueId": "v-kaz",
+      "title": "Akrobatik und Jonglieren – Schnupperkurs",
+      "date": "2026-09-26",
+      "ageNote": "Ab 6 Jahren · Anmeldung erforderlich",
+      "priceNote": "12 € pro Kind",
+      "sourceUrl": "https://www.kaz-goettingen.de/akrobatik-schnupperkurs/"
+    },
+    {
+      "id": "e-h-spielzeit",
+      "venueId": "v-fzh-vahrenwald",
+      "title": "SPIEL:ZEIT – Durch die Eilenriede",
+      "date": "2026-09-27",
+      "ageNote": "Ab 6 Jahren mit erwachsener Begleitung · Anmeldung erforderlich",
+      "priceNote": "Eintritt frei",
+      "sourceUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-Vahrenwald/Veranstaltungen-Kurse/SPIEL-ZEIT-%22Durch-die-Eilenriede"
+    },
+    {
+      "id": "e-bs-disko",
+      "venueId": "v-brunsviga",
+      "title": "Kinderdisko",
+      "date": "2026-11-27",
+      "ageNote": "3 bis 8 Jahre",
+      "priceNote": "Erwachsene 2 € · Kinder kostenfrei",
+      "sourceUrl": "https://www.brunsviga-kulturzentrum.de/kultur-fuer-kids/"
+    }
+  ],
+  "districtSource": "https://www.mi.niedersachsen.de/startseite/themen/kommunen/landkreise/landkreise-und-kreisfreie-staedte-157705.html"
+}

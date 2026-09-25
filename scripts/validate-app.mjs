@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 const read = file => readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
 const manifest = JSON.parse(read('app-draft.json'));
 assert.equal(manifest.template.source, 'neomagic75/magic-app-draft-template');
-assert.equal(manifest.access.mode, 'operator-bearer-server-only');
+assert.equal(manifest.access.mode, 'public-read-only-curated');
 assert.equal(manifest.locale, 'de-DE');
 for (const file of ['index.html', 'public/kurzanleitung.html']) { const text = read(file); assert.match(text, /lang="de-DE"/); assert.match(text, /noindex, nofollow, noarchive/); }
 assert.match(read('public/guide.css'), /hyphens:\s*auto/);

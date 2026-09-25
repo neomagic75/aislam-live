@@ -1,0 +1,37 @@
+import { createRequire } from 'node:module';
+const { chromium } = createRequire(import.meta.url)(process.env.PLAYWRIGHT_MODULE || 'playwright');
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const browser=await chromium.launch({headless:true,channel:'msedge'});
+const page=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1});
+const errors=[];page.on('pageerror',error=>errors.push(error.message));
+await page.goto('https://app.aislam.cc/',{waitUntil:'networkidle'});
+await page.getByRole('heading',{name:'Was ist bei euch los?'}).waitFor();
+assert.equal(await page.locator('.venue-card').count(),11);
+assert.equal(await page.locator('#district option').count(),46);
+await page.locator('#district').selectOption('d-h');
+assert.equal(await page.locator('.venue-card').count(),4);
+await page.locator('#search').fill('Ricklingen');
+assert.equal(await page.locator('.venue-card').count(),1);
+assert.match(await page.locator('.program-link').getAttribute('href'),/hannover.de/);
+await page.screenshot({path:'evidence/mobile-live.png',fullPage:true});
+await page.locator('#search').fill('zzzz-kein-treffer');
+assert.equal(await page.locator('.venue-card').count(),0);
+await page.getByRole('heading',{name:'Noch kein Treffer in unserer Auswahl.'}).waitFor();
+await page.getByRole('button',{name:'Alle Einrichtungen ansehen'}).click();
+assert.equal(await page.locator('.venue-card').count(),11);
+await page.locator('#district').selectOption('landkreis-ammerland');
+assert.match(await page.locator('.empty').innerText(),/noch nicht vertreten/);
+await page.getByRole('button',{name:'Alle Einrichtungen ansehen'}).click();
+const overflowMobile=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);assert.equal(overflowMobile,false);
+await page.setViewportSize({width:1440,height:1000});
+await page.screenshot({path:'evidence/desktop-live.png',fullPage:true});
+const overflowDesktop=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);assert.equal(overflowDesktop,false);
+await page.getByRole('link',{name:'Über die Auswahl'}).click();
+await page.getByRole('heading',{name:'Orte für gemeinsame Zeit.'}).waitFor();
+assert.match(await page.locator('main').innerText(),/keine automatische Aktualisierung/);
+assert.deepEqual(errors,[]);
+fs.writeFileSync('evidence/live-smoke.json',JSON.stringify({checkedAt:new Date().toISOString(),url:'https://app.aislam.cc/',venues:11,districtChoices:45,events:3,mobile:'390x844',desktop:'1440x1000',districtFilter:true,textFilter:true,emptyQuery:true,emptyRegion:true,reset:true,programLink:true,about:true,overflowMobile,overflowDesktop,browserErrors:errors},null,2));
+console.log('Live browser smoke passed: mobile/desktop, region/search/empty/reset/source link/about, no overflow or browser errors.');await browser.close();
+
+

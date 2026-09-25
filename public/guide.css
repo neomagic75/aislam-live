@@ -6,3 +6,4 @@ html { hyphens: auto; overflow-wrap: normal; word-break: normal; }
 .guide p { color: #c5c9da; }
 .guide a { color: #f7d458; text-underline-offset: .2em; display: inline-block; padding: 10px 0; min-height: 44px; }
 .guide a:focus-visible { outline: 3px solid #ad9aff; outline-offset: 4px; }
+.guide .brand-logo { display: block; width: 220px; max-width: 100%; height: auto; }

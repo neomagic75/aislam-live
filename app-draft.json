@@ -1,9 +1,9 @@
 {
   "schema": "magic.make-app-draft.v1",
-  "app_name": "AI Slam Live-App",
+  "app_name": "Kinderzeit · Niedersachsen",
   "slug": "aislam-live",
   "locale": "de-DE",
-  "status": "prepared-infrastructure-awaiting-live-idea",
+  "status": "live-family-finder",
   "template": {
     "source": "neomagic75/magic-app-draft-template",
     "commit": "965a0e7169fb384a47326e78507cb87562b324be",
@@ -19,22 +19,24 @@
   "hosting": {
     "provider": "vercel",
     "team": "stevos-projects-876dfee2",
-    "live_url": "https://aislam-live.vercel.app/"
+    "live_url": "https://app.aislam.cc/"
   },
   "data": {
     "provider": "supabase",
     "project_ref": "qmrzujmwkiwlgfpxqikl",
     "namespace": "aislam_live",
     "table_classification": "server-only",
-    "migration": "supabase/migrations/20260924_aislam_live_probe.sql"
+    "migration": "supabase/migrations/20260924_aislam_live_probe.sql",
+    "curated_dataset": "src/data/venues.json",
+    "refresh": "manual-source-review-and-deploy"
   },
   "access": {
-    "mode": "operator-bearer-server-only",
+    "mode": "public-read-only-curated",
     "visible_login": false,
-    "shared_across_devices": false,
-    "public_surface": "announcement",
+    "shared_across_devices": true,
+    "public_surface": "family-venue-finder",
     "technical_route": "/rehearsal",
-    "note": "Route shell is public. Every data or paid operation requires the operator bearer. Audience authorization is undecided."
+    "note": "Curated public source data; no visitor account or paid API operations. Operator rehearsal stays bearer-protected."
   },
   "instructions": {
     "route": "/kurzanleitung.html",
@@ -42,9 +44,9 @@
   },
   "indexing": "noindex",
   "verification": {
-    "local": "2026-09-24: 10 tests passed; app contract validator passed; TypeScript and Vite production build passed.",
-    "cloud": "pending-root",
-    "visual": "pending-root",
+    "local": "2026-09-25: 11 tests passed, source-bound data contract, TypeScript and production build passed.",
+    "cloud": "2026-09-25: dpl_GVAeoev9zGZJ1abf2ecYYAqzLmEg READY; app.aislam.cc and aislam-live.vercel.app HTTPS, API family-finder and curated bundle smoke passed.",
+    "visual": "2026-09-25: live Edge browser 390x844 and 1440x1000 inspected; filter, search, no-match, unrepresented region, reset, source links and about page passed; no overflow or browser errors. evidence/live-smoke.json",
     "template_validator_overrides": [
       "Service-only table intentionally has no auth.uid ownership or authenticated grant. scripts/validate-app.mjs and authorization tests verify the selected boundary.",
       "Guide hyphenation is in external public/guide.css; the generic validator searches only HTML. Strict CSP excludes inline styles.",

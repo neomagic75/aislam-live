@@ -1,65 +1,23 @@
-# AI Slam Live-App
+# Kinderzeit · Niedersachsen
 
-Open Source unter der [MIT-Lizenz](LICENSE). [Quellcode auf GitHub](https://github.com/neomagic75/aislam-live) · [Problem melden oder Idee beitragen](https://github.com/neomagic75/aislam-live/issues). Der veröffentlichte Code enthält keine Zugangsschlüssel; für einen eigenen Betrieb werden eigene Serverkonfiguration und Providerzugänge benötigt. Die verwendeten npm-Abhängigkeiten behalten ihre jeweiligen Lizenzen.
+Öffentlicher Familienfinder unter https://app.aislam.cc/ (Vercel-Alias https://aislam-live.vercel.app/). Entstanden beim AI Slam am 25.09.2026. [Quellcode](https://github.com/neomagic75/aislam-live) unter [MIT](LICENSE).
 
-Vorbereitete Infrastruktur für die am **25. September 2026** live bestimmte Publikums-App. React, TypeScript und Vite stammen aus dem verifizierten privaten `neomagic75/magic-app-draft-template` (Commit `965a0e7169fb384a47326e78507cb87562b324be`), gezielt in das bestehende Repository übernommen. Die Vorlage liefert die Build-Struktur; ihre generischen Einträge, Kamera und anonyme Browseranmeldung wurden nicht übernommen.
+## Nutzerweg
 
-## Was bereitsteht
+Landkreis, Region Hannover oder kreisfreie Stadt wählen; optional Ort, Einrichtungsname oder Interesse eingeben; offizielles Programm öffnen. 45 regionale Auswahlwerte, eine bewusst begrenzte Auswahl von 11 Einrichtungen in 7 Regionen und drei einzeln quellengeprüfte kommende Veranstaltungen bilden den Start. Leere Regionen werden ausdrücklich als Abdeckungslücken erklärt. Ohne Konto, Besucher-KI oder Datenbankzugriff. Filter sind flüchtiger Browserzustand.
 
-- `/`: öffentliche Ankündigung; `/settings`: Stand und Kurzanleitung.
-- `/kurzanleitung.html`: öffentliches, deutschsprachiges Nutzerdokument.
-- `/rehearsal`: Regieoberfläche. Die Oberfläche ist öffentlich erreichbar, jede Daten- oder KI-Aktion verlangt den Operator-Schlüssel. Kein Schlüssel in URL, Cookie oder Browserstorage; er lebt nur im React-Arbeitsspeicher dieser Seite.
-- `GET /api/status`: Konfigurationsbooleans und Modellnamen; keine Verbindungsprobe, keine Schlüssel.
-- `POST /api/probe`: Bearer-geschützte technische Proben mit exakt `{ "mode": "database" }`, `text` oder `image`. Keine frei gewählten Prompts, Modelle, Tabellen oder Datensatz-IDs.
-- `server/gemini.js`: wiederverwendbarer, ausschließlich serverseitiger REST-Adapter. Ein Providerrequest pro Aktion, kein Retry/Fallback. Text: 2.000 Zeichen Eingabe, 256 Ausgabetokens, 20 Sekunden. Bild: 1K, 45 Sekunden, beschränkte Antwortgröße. Das API-Probe-Prompt ist fest und harmlos.
-- `server/database.js`: service-only Supabase-Probe. Eigene zufällige UUID schreiben, wieder lesen, auch bei ungewissem Insert per UUID löschen, Löschung erneut prüfen. Jeder Request maximal 8 Sekunden; bis zu vier Requests. Keine fachlichen Publikumsdaten.
+## Quellen und Pflege
 
-Öffentlicher Alias: https://aislam-live.vercel.app/. Eigene Domain: https://app.aislam.cc/ nach eigenem DNS/TLS-Nachweis. Die separate Foto-App bleibt https://aislam-app.vercel.app/. `noindex, nofollow, noarchive` schützt nicht vor Zugriff; es sind Suchmaschinenhinweise.
+`src/data/venues.json` ist der gemeinsame veröffentlichte Datenbestand. Er wird bei Build gebündelt. Einträge enthalten offizielle Programm- und Quellenlinks sowie `checkedAt`. Termine enthalten nur belegte Kalendertage; die Oberfläche zeigt ausschließlich Termine ab dem aktuellen Berliner Kalendertag. Für Uhrzeit, Anmeldung und Änderungen gilt die Originalseite.
 
-## Secrets und Datenbank
+Es läuft **kein automatischer Aktualisierungsjob**. Aktualisierung: Originalquellen lesen, Datensatz fachlich prüfen/ersetzen, `Deploy.ps1` ausführen. DREDGER recherchierte den Ausgangsbestand; eine anschließende Quellenprüfung reduzierte ihn. `DATA_REVIEW.md` dokumentiert Annahme und Ausschlüsse. Verwaltungsauswahl: [Niedersächsisches Innenministerium](https://www.mi.niedersachsen.de/startseite/themen/kommunen/landkreise/landkreise-und-kreisfreie-staedte-157705.html), 36 Landkreise, Region Hannover und 8 kreisfreie Städte. Göttingen wird geografisch unter Landkreis Göttingen geführt, Hannover unter Region Hannover. Vollständigkeit der Einrichtungen wird nicht behauptet.
 
-Sechs serverseitige Umgebungsvariablen stehen in `.env.example`: `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `GEMINI_API_KEY`, `AISLAM_OPERATOR_TOKEN` (mindestens 32 Zeichen), `GEMINI_TEXT_MODEL`, `GEMINI_IMAGE_MODEL`. Root provisioniert sie getrennt; `.env.local` bleibt ignoriert. Kein `VITE_`-Secret, kein Supabase-Anon/Publishable-Key im Browser.
+## Entwicklung und Veröffentlichung
 
-Die einzige vorbereitete Migration ist `supabase/migrations/20260924_aislam_live_probe.sql`, ausschließlich auf dem gemeinsamen Projekt `qmrzujmwkiwlgfpxqikl`. Sie erstellt `aislam_live_probe`, aktiviert RLS, entzieht PUBLIC/anon/authenticated alle Tabellenrechte und gibt service_role SELECT/INSERT/DELETE. Es existieren absichtlich keine Browser-RLS-Policies. Eine spätere echte App braucht zuerst ihr eigenes Identitäts-/Berechtigungsmodell. Bei fehlgeschlagener Löschung ist die Probe fehlgeschlagen; ihre synthetische Zeile kann zurückbleiben und muss durch den Operator geprüft werden.
+React, TypeScript, Vite. `npm.cmd ci`, `npm.cmd test`, `npm.cmd run validate`, `npm.cmd run build`, `npm.cmd run dev`. `Deploy.ps1` prüft Tests, Verträge und Build, veröffentlicht direkt auf dem bestehenden Vercel-Projekt und prüft beide HTTPS-Hosts einschließlich API und gebündeltem Datenstand. Der Browser-Smoke prüft Filter, leere Treffer und mobile Darstellung separat. Guide: `/kurzanleitung.html`; Herkunft und Grenzen: `/settings`.
 
-## Lokal prüfen und veröffentlichen
+## Bestehende Regietechnik
 
-```powershell
-npm.cmd ci
-npm.cmd test
-npm.cmd run validate
-npm.cmd run build
-npm.cmd run dev
-```
+`/rehearsal` bleibt eine technische Regieoberfläche. Alle Daten-/KI-Aktionen über `POST /api/probe` benötigen den serverseitigen Operator-Bearer. `GET /api/status` liefert sichere Konfigurationsbooleans, Release und Modus `family-finder`. Die Publikums-App ruft keine dieser Proben auf.
 
-Vite zeigt lokal nur die Oberfläche. Für die API lokal `vercel.cmd dev` mit den serverseitigen Umgebungsvariablen nutzen. Tests mocken alle Dienstaufrufe und kosten nichts. Der neutrale Template-Validator erwartet standardmäßig `auth.uid()` und authenticated-Grants; diese Annahmen gelten ausdrücklich nicht für den gewählten service-only Zugang. `scripts/validate-app.mjs` prüft stattdessen Revokes, Service-Grants, Geheimnisgrenze, Guide und die ausgesparten API-Routen. Die Skill-Prüfung kann außerdem die externe Guide-CSS-Hyphenation nicht erkennen.
-
-`Deploy.ps1` führt Tests, Vertragsprüfung, Build, den bestehenden direkten Vercel-Produktionsdeploy und einen kostenfreien HTTP/API-Smoke aus. Das Skript verändert die Produktion und wird ausschließlich im beauftragten Veröffentlichungsumfang ausgeführt. Git-`main` ist zusätzlich mit Vercel verbunden.
-
-Explizite Operator-Proben nach dem Deployment:
-
-```powershell
-npm.cmd run probe -- status
-npm.cmd run probe -- database
-npm.cmd run probe -- text
-npm.cmd run probe -- image
-```
-
-`text` und `image` kosten jeweils einen Modellaufruf. Keiner dieser Schritte läuft automatisch. Das Skript liest das Token aus der ignorierten Umgebung und druckt weder Secrets noch Bild-Base64. Es akzeptiert nur die App-Hosts und localhost, ohne Redirect-Weitergabe des Tokens. Die Regieoberfläche kann ein generiertes Probe-Bild direkt zeigen.
-
-## Noch von der Live-Idee abhängig
-
-Zweck und Ergebnis, Eingabefelder, Ansichten und Aktionen, fachliche Tabellen sowie Publikumsauthentifizierung/Sharing. Öffentliche KI-Operationen brauchen anschließend ein echtes Zugriffs- und Kostenbudget. Der jetzige Operator-Bearer ist dafür keine Publikumsanmeldung. Der genaue Weiterbauauftrag steht in `HANDOFF.md`.
-
-## Szenarien und Nachweise
-
-| ID | Ablauf | Nachweisstand |
-|---|---|---|
-| A1 | Publikum öffnet Ankündigung, Einstellungen und Guide ohne Anmeldung | Implementiert; visuelle Live-Prüfung durch Root ausstehend |
-| A2 | Unberechtigter Probe-Aufruf löst keinen Dienstaufruf aus | Automatisierter Test |
-| A3 | Ungültige, zu große oder modifizierte Probe wird abgewiesen | Automatisierter Test |
-| A4 | Operator schreibt/liest/löscht ausschließlich die eigene zufällige Probe | Automatisierter Adaptertest; echter Cloud-Smoke durch Root |
-| A5 | Expliziter Text-/Bildklick startet genau einen Request; Fehler/Timeout bleibt sichtbar | Automatisierter Adapter-/Deadline-Test; echter Provider- und UI-Smoke durch Root |
-| A6 | Secrets bleiben serverseitig; API wird nicht zum SPA-HTML umgeschrieben | Vertragsprüfung; echte Routing-/Bundle-Prüfung durch Root |
-
-Die technische Vorbereitung ist kein fertiges Showergebnis und bleibt bis zum echten App-Bau von der Ergebnisfreischaltung getrennt.
+Sechs serverseitige Umgebungsvariablen stehen in `.env.example`; `.env.local` ist ignoriert. Kein Secret im Frontend, keine `VITE_`-Keys. Die einzige Datenbanktabelle `aislam_live_probe` bleibt service-only, mit RLS ohne Browser-Policies. Der Familienfinder speichert keine Besucher- oder Profildaten. Bestehende Adapter- und Autorisierungstests laufen ohne echte Provideraufrufe. Text-/Bildproben sind kostenpflichtig und ausschließlich explizite Regieaktionen, niemals Teil von Test oder Deployment.
