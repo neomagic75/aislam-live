@@ -398,6 +398,59 @@
       "ageNote": "3 bis 8 Jahre",
       "priceNote": "Erwachsene 2 € · Kinder kostenfrei",
       "sourceUrl": "https://www.brunsviga-kulturzentrum.de/kultur-fuer-kids/"
+    },
+    {
+      "id": "e-h-heldengeschichten",
+      "venueId": "v-fzh-vahrenwald",
+      "title": "Heldengeschichten für Erwachsene und Kinder",
+      "date": "2026-10-06",
+      "timeNote": "18:00–20:00 Uhr",
+      "ageNote": "Für Erwachsene und Kinder · ohne Anmeldung",
+      "priceNote": "Eintritt frei",
+      "sourceUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-Vahrenwald/Veranstaltungen-Kurse/Heldengeschichten-f%C3%BCr-Erwachsene-und-Kinder"
+    },
+    {
+      "id": "e-h-minecity",
+      "venueId": "v-fzh-vahrenwald",
+      "title": "MineCity – wir bauen unsere Stadt!",
+      "date": "2026-10-12",
+      "endDate": "2026-10-14",
+      "timeNote": "09:30–15:30 Uhr · dreitägiger Kurs",
+      "ageNote": "Ab 9 Jahren · Anmeldung erforderlich",
+      "priceNote": "27 € für 3 Tage · mit HannoverAktivPass 13,50 €",
+      "sourceUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-Vahrenwald/Veranstaltungen-Kurse/MineCity-%E2%80%93-wir-bauen-unsere-Stadt"
+    },
+    {
+      "id": "e-h-stopmotion",
+      "venueId": "v-stz-ricklingen",
+      "title": "Stop-Motion-Filmprojekt",
+      "date": "2026-10-14",
+      "endDate": "2026-10-16",
+      "timeNote": "10:00–14:00 Uhr · dreitägiger Kurs",
+      "ageNote": "Ab 7 Jahren · Anmeldung erforderlich",
+      "priceNote": "15 € · mit HannoverAktivPass 7,50 €",
+      "sourceUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Stadtteilzentrum-Ricklingen/Veranstaltungen-und-Projekte/Veranstaltungen-f%C3%BCr-Kinder-und-Familien/Stop-Motion-Filmprojekt"
+    },
+    {
+      "id": "e-h-stoff",
+      "venueId": "v-stz-ricklingen",
+      "title": "Kreativ mit Stoff",
+      "date": "2026-10-19",
+      "endDate": "2026-10-21",
+      "timeNote": "10:00–14:00 Uhr · dreitägiger Kurs",
+      "ageNote": "Ab 8 Jahren · Anmeldung erforderlich",
+      "priceNote": "15 € · mit HannoverAktivPass 7,50 €",
+      "sourceUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Stadtteilzentrum-Ricklingen/Veranstaltungen-und-Projekte/Veranstaltungen-f%C3%BCr-Kinder-und-Familien/Kreativ-mit-Stoff"
+    },
+    {
+      "id": "e-h-kaleidoskope",
+      "venueId": "v-fzh-vahrenwald",
+      "title": "SPIEL:ZEIT – Kaleidoskope: Magisch, bunte Farben",
+      "date": "2026-10-25",
+      "timeNote": "14:30–16:30 Uhr",
+      "ageNote": "Altersangabe bitte erfragen · Anmeldung erforderlich",
+      "priceNote": "Eintritt frei",
+      "sourceUrl": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-Vahrenwald/Veranstaltungen-Kurse/SPIEL-ZEIT-Kaleidoskope-Magisch,-bunte-Farben"
     }
   ],
   "districtSource": "https://www.mi.niedersachsen.de/startseite/themen/kommunen/landkreise/landkreise-und-kreisfreie-staedte-157705.html"

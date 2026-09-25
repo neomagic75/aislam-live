@@ -4,7 +4,7 @@
 
 ## Nutzerweg
 
-Landkreis, Region Hannover oder kreisfreie Stadt wählen; optional Ort, Einrichtungsname oder Interesse eingeben; offizielles Programm öffnen. 45 regionale Auswahlwerte, eine bewusst begrenzte Auswahl von 11 Einrichtungen in 7 Regionen und drei einzeln quellengeprüfte kommende Veranstaltungen bilden den Start. Leere Regionen werden ausdrücklich als Abdeckungslücken erklärt. Ohne Konto, Besucher-KI oder Datenbankzugriff. Filter sind flüchtiger Browserzustand.
+Landkreis, Region Hannover oder kreisfreie Stadt wählen; optional Ort, Einrichtungsname oder Interesse eingeben; offizielles Programm öffnen. 45 regionale Auswahlwerte, eine bewusst begrenzte Auswahl von 11 Einrichtungen in 7 Regionen und acht einzeln quellengeprüfte kommende Veranstaltungen bilden den Start. Leere Regionen werden ausdrücklich als Abdeckungslücken erklärt. Ohne Konto, Besucher-KI oder Datenbankzugriff. Filter sind flüchtiger Browserzustand.
 
 ## Quellen und Pflege
 

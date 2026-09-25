@@ -21,8 +21,12 @@ Vollständige Original-URLs stehen im Datensatz. Prüfdatum bedeutet Abruf-/Prü
 
 KroKuS hatte im Bericht eine sachfremde Berliner PDF als Beleg. Mehrere ländliche Kulturzentren hatten nur LAG-Mitgliedschaft statt konkretem Kinderbeleg. Kaltenmoor verknüpfte ein Stadtteilhaus an der St.-Stephanus-Passage mit dem Aktivspielplatz an einer anderen Adresse. `freezeithaus.de` ist eine Unterstützungskampagne, kein Veranstaltungsprogramm. Villa Delmenhorst hatte einen nicht sicher auf 2026 datierten Sekundärbericht. CD-Kaserne, Heinz-Fitschen-Haus und Alte Polizei waren in diesem begrenzten Quellenlauf nicht belastbar über ihre Originalseiten abrufbar; keine Aussage über deren tatsächliches Angebot. Musa und weitere Leads sind noch nicht fachlich aufgenommen.
 
-Nicht belegte Zauberei-/KUFA-/Villa-Termine verworfen. Mehrtägige Kurse aus der Recherche nicht als eintägige Veranstaltungen abgebildet. Rohzeiten mit irrtümlichem UTC-Z in der Recherche wurden nicht übernommen; veröffentlichte Datensätze enthalten Kalendertage.
+Nicht belegte Zauberei-/KUFA-/Villa-Termine verworfen. Mehrtägige Kurse werden mit Start- und Enddatum statt als eintägige Veranstaltungen abgebildet. Rohzeiten mit irrtümlichem UTC-Z in der Recherche wurden nicht übernommen; veröffentlichte Datensätze enthalten Kalendertage.
 
 ## Grenzen
 
 11 Einrichtungen in 7 Regionen; 38 Auswahlregionen noch ohne Einträge. Keine vollständige Niedersachsen-Abdeckung. Keine automatische Aktualisierung, Verfügbarkeit, Anmeldemöglichkeit oder KI-Recherche pro Besucher. Offizielle Quelle für die 45 Verwaltungseinheiten ist im Datensatz unter `districtSource` verlinkt.
+
+## Zusatzsuche Region Hannover
+
+Auf ausdrücklichen Wunsch am 25.09.2026 per Perplexity entdeckt und anschließend fünf amtliche Hannover.de-Einzelseiten gelesen: Heldengeschichten (06.10.), MineCity (12.–14.10.), Stop-Motion (14.–16.10.), Kreativ mit Stoff (19.–21.10.) und Kaleidoskope (25.10.), jeweils 2026. Offizielle Detailseiten bestätigen Zeiten, angegebene Altersgrenzen, Kosten und Anmeldehinweise; URLs stehen direkt in den Ereignissen. Insgesamt acht kommende Termine, davon sechs in der Region Hannover. Mehrtagesangebote zeigen Enddatum und Kursdauer. Der zusätzliche PDF-Lead Töpfern wurde ohne eigene PDF-Prüfung nicht aufgenommen. Nachweis: evidence/hannover-events-live.json.

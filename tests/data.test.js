@@ -7,5 +7,5 @@ test('public data has unique valid relations, complete regional selection and so
  for(const list of [data.districts,data.venues,data.events])assert.equal(new Set(list.map(item=>item.id)).size,list.length);
  assert.ok(data.venues.length>0);const districts=new Set(data.districts.map(d=>d.id));const venues=new Set(data.venues.map(v=>v.id));
  for(const venue of data.venues){assert.ok(districts.has(venue.districtId));assert.ok(venue.childFriendlyEvidence);assert.ok(Number.isFinite(Date.parse(venue.checkedAt)));for(const field of ['website','sourceUrl','programUrl'])if(venue[field])assert.equal(new URL(venue[field]).protocol,'https:');}
- for(const event of data.events){assert.ok(venues.has(event.venueId));assert.match(event.date,/^\d{4}-\d{2}-\d{2}$/);assert.equal(new URL(event.sourceUrl).protocol,'https:');}
+ for(const event of data.events){assert.ok(venues.has(event.venueId));assert.match(event.date,/^\d{4}-\d{2}-\d{2}$/);if(event.endDate){assert.match(event.endDate,/^\d{4}-\d{2}-\d{2}$/);assert.ok(event.endDate>=event.date);}assert.equal(new URL(event.sourceUrl).protocol,'https:');}
 });
