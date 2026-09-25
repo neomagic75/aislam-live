@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-09-25T13:03:15.228Z",
+  "results": [
+    {
+      "id": "v-fzh-doehren",
+      "status": 200,
+      "url": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-D%C3%B6hren/Stadtteilkultur-Termine"
+    },
+    {
+      "id": "v-fzh-vahrenwald",
+      "status": 200,
+      "url": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-Vahrenwald/Veranstaltungen-Kurse"
+    },
+    {
+      "id": "v-stz-ricklingen",
+      "status": 200,
+      "url": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Stadtteilzentrum-Ricklingen/Veranstaltungen-und-Projekte/Veranstaltungen-f%C3%BCr-Kinder-und-Familien"
+    },
+    {
+      "id": "v-fzh-linden",
+      "status": 200,
+      "url": "https://www.hannover.de/Kultur-Freizeit/Freizeit-Sport/Freizeiteinrichtungen/Freizeitheime-Stadtteilzentren/Freizeitheim-Linden"
+    },
+    {
+      "id": "v-brunsviga",
+      "status": 200,
+      "url": "https://www.brunsviga-kulturzentrum.de/kultur-fuer-kids/"
+    },
+    {
+      "id": "v-haus-der-jugend-os",
+      "status": 200,
+      "url": "https://hausderjugend-os.de/"
+    },
+    {
+      "id": "v-fst-ofenerdiek",
+      "status": 200,
+      "url": "https://www.oldenburg.de/startseite/leben-in-oldenburg/familie/angebote-fuer-kinder-jugendliche/freizeitstaetten/freizeitstaette-ofenerdiek.html"
+    },
+    {
+      "id": "v-fst-buergerfelde",
+      "status": 200,
+      "url": "https://www.oldenburg.de/startseite/leben-in-oldenburg/familie/angebote-fuer-kinder-jugendliche/freizeitstaetten/freizeitstaette-buergerfelde.html"
+    },
+    {
+      "id": "v-kufa-hildesheim",
+      "status": 200,
+      "url": "https://kufa.info/programm/"
+    },
+    {
+      "id": "v-kaz",
+      "status": 200,
+      "url": "https://www.kaz-goettingen.de/category/kurse-workshops/kinderkurse/"
+    },
+    {
+      "id": "v-toepfers-muehle",
+      "status": 200,
+      "url": "https://www.peine-erleben.de/erleben/aktivitaeten/junges-peine/jugendfreizeitzentrum-toepfers-muehle/"
+    }
+  ]
+}
